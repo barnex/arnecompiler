@@ -1,0 +1,26 @@
+include(bool)
+include(void)
+include(int)
+
+variable(int sum, 0)
+
+for(variable(int i, 2), _lessl(i, 2000000), _incl(i), block(
+  if(isprime(i), block(
+    print_int(sum)
+    sum(_addl(sum, i))
+  ))
+))
+
+print_int(sum)
+
+function(bool isprime, block(variable(int n)),  block(
+  variable(int i)
+  variable(bool prime, 1)
+  for(i(2), _lessl(i, n), _incl(i),  block(
+    if(_eql(_modl(n, i), 0), block(
+      prime(0)
+      i(n)
+    ))
+  ))
+  prime
+))

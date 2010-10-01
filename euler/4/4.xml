@@ -1,0 +1,101 @@
+<block>
+
+  <comment> Project Euler #4 </comment>
+  
+  <include> lib/array.xml </include>
+  <include> lib/math.xml </include>
+  <include> lib/io.xml </include>
+  <include> lib/bool.xml </include>
+  
+  
+  <declarefunction> print_array <block>
+    <var> array <pop/> </var>
+    <for> <var> i <int data='0'/> </var>
+	  <call> neq <i/> <call> array_length <array/> </call> </call>
+	  <set> i <call> add <i/> <int data='1'/> </call> </set> <block>
+	  
+	  <call> print <call> array_get <array/> <i/> </call> </call>
+	  <call> print_char <space/> </call>
+	
+    </block></for>
+    <call> print_char <endl/> </call>
+  </block></declarefunction>
+
+
+  <declarefunction> to_string6 <block>
+    <var> number <pop/> </var>
+    <var> str <call> new_array <int data='6'/></call> </var>
+    
+    <for> <var> i <int data='0'/> </var>
+	  <call> neq <i/> <call> array_length <str/> </call> </call>
+	  <set> i <call> add <i/> <int data='1'/> </call> </set> <block>
+	  
+	  <call> array_set <str/> <i/> <call> mod <number/> <int data='10'/> </call>
+	  <set> number <call>div <number/> <int data='10'/> </call> </set>
+	  </call>
+	
+    </block></for>
+    <push> <str/> </push>
+  </block></declarefunction>
+
+
+  <declarefunction> is_palindrome <block>
+    <var> number <pop/> </var>
+    <var> str <call> to_string6 <number/> </call> </var>
+    
+    <!--<call> print_array <str/> </call>-->
+    
+    <var> half_length 
+      <call> div <call> array_length <str/> </call> <int data='2'/> </call> 
+    </var>
+    <var> palindrome <int data='1'/> </var>
+    
+    <for> <var> i <int data='0'/> </var>
+	  <call> smaller <i/> <half_length/> </call>
+	  <set> i <call> add <i/> <int data='1'/> </call> </set> <block>
+	  
+	  <var> front <call> array_get <str/> <i/> </call> </var>
+	  <var> back <call> array_get <str/> <call> sub <int data='5'/> <i/> </call> </call> </var>
+	  <if> <call> neq <front/> <back/> </call> <block>
+	  
+	    <set> palindrome <int data='0'/> </set>
+	  
+	  </block></if>
+	
+    </block></for>
+    
+    <push> <palindrome/> </push>
+    <free> <str/> </free>
+  </block></declarefunction>
+
+  <var> greatest <int data='0'/> </var>
+
+  <for> <var> i <int data='999'/> </var>
+	  <call> greater <i/> <int data='99'/> </call>
+	  <set> i <call> sub <i/> <int data='1'/> </call> </set> <block>
+    
+    <for> <var> j <int data='999'/> </var>
+	  <call> greater <j/> <int data='99'/> </call>
+	  <set> j <call> sub <j/> <int data='1'/> </call> </set> <block>
+    
+      <var> product <call> mul <i/> <j/> </call> </var>
+      
+      <if> <call> is_palindrome <product/> </call> <block>
+	<call> println <product/> </call>
+	
+	<if><call> greater <product/> <greatest/> </call> <block>
+	
+	  <set> greatest <product/> </set>
+	
+	</block></if>
+	
+	<call> println <greatest/> </call>
+	
+      </block></if>
+      
+    </block></for>
+    <!--<call> println <i/> </call>-->
+  </block></for>
+  
+  
+</block>

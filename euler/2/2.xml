@@ -1,0 +1,31 @@
+<block>
+
+
+<declare><variable>sum</variable><int data='2'/></declare>
+<declare><variable>f1</variable><int data='1'/></declare>
+<declare><variable>f2</variable><int data='2'/></declare>
+<declare><variable>f3</variable><int data='3'/></declare>
+
+<while> <smaller><f3/><int data='4000000'/></smaller>
+  <block>
+   
+    <f3><add><f1/><f2/></add></f3>
+    
+    <if><equal><mod><f3/><int data='2'/></mod><int data='0'/></equal>
+      <block>
+	<print><f3/></print>
+	<sum><add><sum/><f3/></add></sum>
+      </block>
+      <block/>
+    </if>
+    
+    <f1><f2/></f1>
+    <f2><f3/></f2>
+    
+  </block>
+</while>
+
+<print><sum/></print>
+
+
+</block>

@@ -1,0 +1,18 @@
+variable(answer, 1)
+variable(i, 0)
+
+for(i(1), neq(i, 21), i(add(i, 1)), block(
+    if( mod(answer, i)  
+    block(
+	variable(j, 1)
+	while( mod(mul(answer, j), i)
+	  j(add(j, 1))
+	)
+	answer(mul(answer, j))
+    ))
+))
+
+print_int(answer)
+
+
+cfunction(print_int, block(variable(x)))

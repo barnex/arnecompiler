@@ -1,0 +1,3 @@
+declareclass(bool, 0)
+variable(bool, true, 1)
+variable(bool, false, 0)

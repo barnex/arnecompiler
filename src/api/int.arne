@@ -1,0 +1,19 @@
+declareclass(int, 4)
+
+function(int, sub, block(variable(int, a), variable(int, b)), block(
+  _subl(a, b)
+))
+
+function(int, add, block(variable(int, a), variable(int, b)), block(
+  _addl(a, b)
+))
+
+function(int, mul, block(variable(int, a), variable(int, b)), block(
+  _mull(a, b)
+))
+
+function(int, div, block(variable(int, a), variable(int, b)), block(
+  _divl(a, b)
+))
+
+cfunction(void, print_int, block(variable(int, value)) )

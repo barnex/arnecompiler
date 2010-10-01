@@ -1,0 +1,47 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{a4wide}
+
+\usepackage[final]{graphicx} 
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage[small,bf, centerlast]{caption}
+\usepackage{xspace}
+\usepackage{makeidx}
+\makeindex
+\usepackage{color}
+
+\usepackage{listings}
+\lstset{
+language=java,                  % choose the language of the code
+basicstyle=\sffamily\scriptsize,       % the size of the fonts that are used for the code
+backgroundcolor=\color{lightblue},  % choose the background color. You must add \usepackage{color}
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=none,                   % adds a frame around the code
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false         % sets if automatic breaks should only happen at whitespace
+}
+
+\usepackage[plainpages=false, colorlinks=true, citecolor=black, linkcolor=blue, filecolor=blue, urlcolor=blue, bookmarks=true, pdftitle={Compiler0x1}, pdfauthor={Arne Vansteenkiste}]{hyperref}%a4paper
+\usepackage[all]{hypcap} % link to image shows image, not caption.
+\hypersetup{breaklinks=true}
+
+\newcommand{\compiler}{Compiler\textsc{0x1}\xspace}
+
+\begin{document}
+\sf
+\setlength{\parindent}{0cm}
+
+
+\title{\compiler}
+\author{Arne Vansteenkiste}
+\date{2009}
+\maketitle
+
+\section{Introduction}
+
+\compiler is a hobby project to write a user-friendly compiler and programming language.
+
+\end{document}

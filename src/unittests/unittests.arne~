@@ -1,0 +1,163 @@
+include(void)
+include(bool)
+include(int)
+include(assert)
+
+block(
+  variable(int a)
+  assert(_eql(a, 0))
+)
+
+block(
+  variable(array(int) a, newarray(int, 200001))
+  set(arrayget(a, 0), 1234567)
+  assert(_eql(1234567, arrayget(a, 0)))
+  set(arrayget(a, 200000), 123)
+  assert(_eql(123, arrayget(a, 200000)))
+)
+
+
+block(
+  variable(test s, newstruct(test))
+  set(getmember(s, l), 123)
+  set(getmember(s, a), 1234)
+  assert(_eql(123, getmember(s, l)))
+  assert(_eql(1234, getmember(s, a)))
+
+struct(test, block(
+member(int a)                                                                                                                                       
+member(int z)
+member(int e)
+member(int r)
+member(int t)
+member(int y)
+member(int u)
+member(int i)
+member(int o)
+member(int p)
+member(int q)
+member(int s)
+member(int d)
+member(int f)
+member(int g)
+member(int h)
+member(int j)
+member(int k)
+member(int l)
+))
+)
+
+block(
+
+  variable(int f_add,
+    lambda(int, block(variable(int a), variable(int b)), block(
+	_addl(a, b)
+      ))
+  )
+
+  variable(int f_mul,
+    lambda(int, block(variable(int a), variable(int b)), block(
+	_mull(a, b)
+      ))
+  )
+
+  variable(int f)
+
+  f(f_add)
+  assert(_eql(5, call(f, block(2, 3))))
+
+  f(f_mul)
+  assert(_eql(6, call(f, block(2, 3))))
+)
+
+
+block(
+  if(1, assert(1))
+  if(0, assert(0))
+  if(1, assert(1), assert(0))
+  if(0, assert(0), assert(1))
+
+  variable(int, t, 0)
+  if(2, t(1))
+  assert(t)
+)
+
+block(
+  assert(_eql(13, 13))
+  assert(_eql(-13, -13))
+  assert(_neql(13, 14))
+  assert(_neql(13, -13))
+  assert(_lessl(13, 14))
+  assert(_greaterl(14, 13))
+  assert(_lessl(-13, 13))
+  assert(_greaterl(13, -13))
+
+  assert(_eql(_addl(3, 2), 5))
+  assert(_eql(_addl(3, -2), 1))
+
+  assert(_eql(_subl(7, 12), -5))
+  assert(_eql(_subl(-7, -12), 5))
+
+
+  assert(_eql(_mull(-4, 5), -20))
+  assert(_eql(_divl(30, -4), -7))
+  assert(_eql(_modl(12, 5), 2))
+
+  variable(int, i, 0)
+  _incl(i)
+  assert(_eql(i, 1))
+  _decl(i)
+  assert(_eql(i, 0))
+)
+
+block(
+  assert(_eql(ftest(1, 2), 3))
+
+  function(int, ftest, block(variable(int, x), variable(int, y)), 
+  block(
+	  variable(int, a)
+	  variable(int, b)
+	  a(x)
+	  b(y)
+	  _addl(a, b)
+  ))
+)
+
+variable(int, a)
+a(0)
+assert(_eql(a, 0))
+
+variable(int, b)
+b(0)
+assert(_eql(b, 0))
+
+block(
+	assert(_eql(a, 0))
+	variable(int, b)
+	b(1)
+	assert(_eql(b, 1))
+)
+
+assert(_eql(b, 0))
+
+block(
+variable(int, i, 0)
+while(_neql(i, 10),
+  i(_addl(i, 1))
+)
+assert(_eql(i, 10))
+)
+
+variable(int, sum, 0)
+for(variable(int, i, 0), _neql(i, 10), _incl(i), block(
+  sum(_addl(sum, i))
+))
+assert(_eql(sum, 45))
+
+nonhidingblock(
+  variable(int, lookatme, 23)
+)
+assert(_eql(lookatme, 23))
+
+
+

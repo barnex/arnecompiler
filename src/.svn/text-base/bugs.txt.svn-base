@@ -1,0 +1,38 @@
+1
+"alphanumeric123" gets parsed to an integer Word because it ends with a digit.
+
+2 (fixed)	
+"For" can not handle declarations: child.precompile should be able to precompile and replace the child itself, rather than only its children.
+
+3 (fixed)
+"Increment" and "Decrement" do not work because variable() and variable can not be distinguished
+
+4 CRITICAL
+Initializing variables after first use should really not be possible (or they should be actually initialized). Also the snippet: 
+
+int d = read()
+int a = 48
+function read = ()->(
+  a
+)
+
+uses unitialized variable a
+
+
+5 (fixed)
+Variable declaration with initializer does not work inside function body. Variable gets seen as static.
+
+6
+Function(f, ...);  f(); function(f, ...) resolves to the first function, not noticing the second one.
+
+7
+No detection of "symbol already defined"
+
+8
+No counting of number of arguments and types in builtin functions like IF
+
+9
+Iterative compilation is "too eager" to compile and makes mistakes like bug #6. Should be reworked a bit. fullyCompiled() is not yet used like it should.  
+
+10 (fixed)
+All integer operations seem to be unsigned, make them signed. Look out for integer division, use cdq for a sign extension of %eax to %edx.

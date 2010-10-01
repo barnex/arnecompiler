@@ -1,0 +1,17 @@
+variable(sum, 0)
+variable(sumsquares, 0)
+
+variable(i, 0)
+
+for(i(0), neq(i, 101), i(add(i, 1)), block(
+    sum(add(sum, i))
+    sumsquares(add(sumsquares, sq(i)))
+))
+
+print_int(sub(sq(sum), sumsquares))
+
+function(sq, block(variable(x)), block(
+  mul(x, x)
+))
+
+cfunction(print_int, block(variable(x)))

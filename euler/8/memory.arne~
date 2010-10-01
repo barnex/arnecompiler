@@ -1,0 +1,5 @@
+declareclass(pointer, 4)
+cfunction(int, getmem, block(variable(pointer address)))
+cfunction(void, setmem, block(variable(pointer address, int value)))
+cfunction(pointer, malloc, block(variable(int size)))
+cfunction(void, free, block(variable(pointer address)))

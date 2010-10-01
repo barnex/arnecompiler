@@ -1,0 +1,34 @@
+<block>
+
+
+<declarevariable>largest<int data='1'/></declarevariable>
+<declarevariable>divider<int data='2'/></declarevariable>
+<declarevariable>number<int data='600851475143'/></declarevariable>
+<declarevariable>orignumber<number/></declarevariable>
+<declarevariable>product<int data='1'/></declarevariable>
+
+<print><number/></print>
+
+<while> <not><equal><product/><orignumber/></equal></not>
+  <block>
+  
+    <while> <equal> <mod><number/><divider/></mod> <int data='0'/> </equal>
+      <block>
+	<setvariable>number <divide> <number/><divider/> </divide> </setvariable>
+	<setvariable>product <multiply> <product/><divider/> </multiply> </setvariable>
+	
+	<print><divider/></print>
+	<setvariable>largest<divider/></setvariable>
+      </block>
+    </while>
+    
+    
+    <setvariable> divider <add><divider/><int data='1'/></add></setvariable>
+    
+  </block>
+</while>
+
+<print><largest/></print>
+
+<print><product/></print>
+</block>

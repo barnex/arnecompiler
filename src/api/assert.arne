@@ -1,0 +1,1 @@
+cfunction(int, assert, block(variable(int, value)) )

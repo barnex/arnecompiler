@@ -1,0 +1,41 @@
+<block>
+
+<declare><variable>sum</variable><int data='0'/></declare>
+<declare><variable>i</variable><int data='0'/></declare>
+
+<while> <call><function>smaller</function><variable>i</variable><int data='1000'/></call>
+  
+  <block>
+   
+    <if> <call><function>or</function>
+	  <call><function>equal</function>
+	    <int data='0'/>
+	    <call><function>mod</function><variable>i</variable><int data='3'/></call>
+	  </call>
+	  <call><function>equal</function>
+	    <int data='0'/>
+	    <call><function>mod</function><variable>i</variable><int data='5'/></call>
+	  </call>
+	 </call>
+	 
+    <block>
+    <call> <variable>sum</variable>
+      <call> <function>add</function> <variable>sum</variable>  <variable>i</variable> </call>
+    </call>  
+    <call><function>print</function><variable>i</variable></call>
+    </block>
+    <block></block>
+    </if>
+    
+    <call> <variable>i</variable>
+      <call> <function>add</function> <variable>i</variable> <int data='1'/> </call>
+    </call> 
+    
+  </block>
+
+</while>
+
+
+<call><function>print</function><variable>sum</variable></call>
+
+</block>

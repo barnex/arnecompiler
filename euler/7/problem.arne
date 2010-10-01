@@ -1,0 +1,30 @@
+variable(count, 1)
+variable(n, 2)
+
+function(isprime, block(variable(n)),  block(
+  variable(i)
+  variable(prime, 1)
+  for(i(2), <(i, n), ++(i),  block(
+    if(==(%(n, i), 0), block(
+      prime(0)
+      i(n)
+    ))
+  ))
+  prime
+))
+
+
+
+variable(answer)
+variable(i)
+for(i(2), !=(count, 10002), ++(i),  block(
+    if(isprime(i), block(
+      answer(i)
+      ++(count)
+    ))
+))
+
+print_int(answer)
+
+cfunction(print_int, block(variable(i)))
+cfunction(exit, block(variable(status)))

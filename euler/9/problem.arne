@@ -1,0 +1,22 @@
+include(void)
+include(int)
+
+for(variable(int a, 1), _lessl(a, 1000), _incl(a), block(
+   for(variable(int b, 1), _lessl(b, _subl(1000, a)), _incl(b), block(
+	variable(int c, _subl(1000, _addl(a, b)))
+	if(_eql(_addl(square(a), square(b)), square(c)), block(
+	  print_int(a)
+	  print_int(b)
+	  print_int(c)
+	  print_int(_mull(a, _mull(b, c)))
+	))
+  ))   
+))
+
+function(int square block(variable(int x)), block(
+  _mull(x, x)
+))
+
+function(int sum block(variable(int a), variable(int b), variable(int c)), block(
+  _addl(_addl(a, b), c)
+))

@@ -1,0 +1,83 @@
+codename BarneX
+<!------------/>
+
+<compilation>
+
+  The compiler outputs nicely formatted x86 assembly code with comments. It is meant to be human-readible.
+
+  The user should not have to worry about technical issues: there is automatic garbage collection, array bound checks, ...
+
+</compilation>
+
+
+<syntax>
+
+  The design allows different syntaxes to be used in the front-end. 
+  Currently, an xml syntax is used but a c++/java-like syntax and/or a python/lua-like syntax are on the whishlist.
+ 
+</syntax>
+
+
+<whiteboard>
+
+  // just some ideas about how it should look like
+
+  int a = 0		// a strongly-typed declaration
+  auto b = 0		// auto is a strong type, determined by the first assignment: b is, and will always be, an int
+  any c = 0		// weak (duck) typing. anything can be assigned to c. in this case, type checks occur at run-time
+  d = 0			// this should be equivalent to either 'any d = 0' or 'auto d = 0', still to be decided.
+
+			// uniform access: variables look just like functions
+  a = 1			// assignment
+  a(1)			// does the same
+
+  b = a			// get value
+  b = a()		// does the same
+
+
+			// in fact, everything 'is' a function
+  a = int(1)		// even 'int' (or any other class) is just a function that takes arguments and returns an int
+ 
+  v = vector(int)()	// generic classes are just functions, that take classes as arguments and return a non-generic class
+			
+  myclass = class(	// 'class' is just a function that takes declarations as aruments and returns a class.
+    int capacity,
+    int size,
+    ...
+  )
+
+			// but really everything 'is' a class
+  1.equals(2)		// does the same as '1 == 2'
+  1.class()		// returns 'int'
+  
+			// even functions 'are' classes
+
+  f = function((int a, int b),(return a + b))
+  f.class() 		// returns 'function((int, int), int)'
+  function g = f	// they can be manipulated like any other variable
+
+			// so depending on your taste, you can think of anything as a function or a class
+
+			// since functions are first-class citizens, they can be declared anywhere, even inside other functions
+  function f = function( (int a, int b), (
+    
+    function g = function((), (return a + b))	// g is declared inside f
+    return g()
+    
+  ))
+
+			 // i love reflection and metaprogramming
+			 // just some ideas:
+  object a = ...
+  a.features()		// list of all members
+  a.feature("name_of_a_member") // returns a member, dynamically looked up at runtime
+  ...
+
+</whiteboard>
+
+
+
+<quote>
+  Let us change our traditional attitude to the construction of programs. Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.
+  Donald Knuth 
+</quote>
