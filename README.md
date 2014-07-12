@@ -1,0 +1,59 @@
+arnecompiler
+============
+
+A hobby project to create a compiler that compiles my own simple language to x86 asm code. 
+It is powerful enough to solve the first 10 problems on http://projecteuler.net.
+The language has no built-ins, all basic types like even int, are defined in the language proper.
+
+C libraries can easily be called.
+
+
+Language example:
+
+
+
+
+`include(void)
+include(int)
+include(memory)
+include(io)
+
+variable(pointer array, malloc(_mull(4, 1000)))
+
+function(void set_array, block(variable(int index), variable(int value)), block(
+  setmem(_addl(array, _mull(4, index)), value)
+))
+
+function(int get_array, block(variable(int index)), block(
+  getmem(_addl(array, _mull(4, index)))
+))
+
+variable(int chr_a, 48)
+variable(int digit, read())
+variable(int i, 0)
+
+while(_neql(digit, sub(eof, chr_a)), block(
+  set_array(i, digit)
+  _incl(i)
+  print_int(digit)
+  digit(read)
+))
+
+variable(int answer, 0)
+
+for(variable(int i, 0), _lessl(i, 995), _incl(i), block(
+  variable(int product, 1)
+  for(variable(int j, 0), _lessl(j, 5), _incl(j), block(
+    product(_mull(product, get_array(_addl(i, j))))
+  ))
+  if(_greaterl(product, answer)
+    answer(product)
+  )
+))
+
+print_int(answer)
+
+function(int, read, block(), block(
+  sub(fgetc(system_stdin()), chr_a)
+))
+`
