@@ -12,8 +12,7 @@ Language example:
 
 
 
-
-`include(void)
+include(void)
 include(int)
 include(memory)
 include(io)
@@ -56,4 +55,4 @@ print_int(answer)
 function(int, read, block(), block(
   sub(fgetc(system_stdin()), chr_a)
 ))
-`
+
