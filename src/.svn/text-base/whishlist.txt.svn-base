@@ -1,8 +1,0 @@
-0
-See if unsigned multiplication and division can be replaced by signed ones. int should be singed!
-
-1
-Convert Variable to Member when grandchild of a struct
-
-2
-Check how calloc can be used to autoinit array and struct elements to 0
